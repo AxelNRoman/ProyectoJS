@@ -1,5 +1,3 @@
-alert("Empecemos a comprar")
-
 function Producto(nombre, precio, stock){
     this.nombre = nombre
     this.precio = precio
