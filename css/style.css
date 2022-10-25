@@ -1,14 +1,87 @@
-h2 {
-    margin-top: 10px;
-    margin-bottom: 10px;
+#cartas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
 }
 
-.consulta{
-    margin-top: 20px;
-    color: rgb(69, 226, 205);
-    font-size: 30px;
+.text_color {
+    color: black;
 }
 
-input {
-    block-size: 30px;
+.tittle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem;
+}
+
+.icon_cart {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    font-size: 1.5rem;
+    padding: .3rem .6rem;
+    border: 1px solid rgba(0, 0, 0, 0.459);
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.45);
+    background-color: rgba(255, 255, 255, 0.164);
+}
+
+.icon_cart:hover {
+    color: rgba(255, 255, 255, 0.815);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.568);
+}
+
+.card {
+    margin: 2rem;
+    height: 25rem;
+    background-color: rgba(31, 31, 31, 0.801);
+    border: 1px solid rgba(0, 0, 0, 0.486);
+    border-radius: 5px;
+    box-shadow: 5px 9px 10px rgba(0, 0, 0, 0.363);
+}
+
+.card_img {
+    margin-top: .2rem;
+    width: 17.5rem;
+}
+
+.card_name {
+    height: 2rem;
+}
+
+.card_description {
+    height: 6.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card_button {
+    width: 10rem;
+    border: 1px solid rgba(0, 0, 0, 0.486);
+    border-radius: 5px;
+    box-shadow: 5px 9px 10px rgba(0, 0, 0, 0.363);
+    background-color: rgba(255, 255, 255, 0.678);
+}
+
+.card_button:hover {
+    box-shadow: 8px 12px 10px rgba(0, 0, 0, 0.568);
+}
+
+.cardCarrito {
+    display: flex;
+    /* justify-content: space-evenly; */
+    margin: .5rem;
+}
+
+.cart_cont {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
