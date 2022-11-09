@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "nombre": "Forza Horizon 5",
+        "precio": 3300,
+        "stock": 100,
+        "img": "./imgs/forza5.jpg",
+        "descripcion": "Maneja como nunca en el mundo de Forza Horizon, con una gran cantidad de vehiculos que te encantaran."
+    },
+    {
+        "id": 2,
+        "nombre": "CyberPunk 2077",
+        "precio": 5200,
+        "stock": 100,
+        "img": "./imgs/cyber77.jpg",
+        "descripcion": "Un futuro lleno de tecnologia avanzada y problemas te esperan."
+    },
+    {
+        "id": 3,
+        "nombre": "FIFA 22",
+        "precio": 3600,
+        "stock": 100,
+        "img": "./imgs/fifa22.jpg",
+        "descripcion": "Conviertete en una estrella del futbol o el DT con más renombre, crea tu equipo, y más, en FIFA 22."
+    },
+    {
+        "id": 4,
+        "nombre": "STRAY",
+        "precio": 1900,
+        "stock": 100,
+        "img": "./imgs/stray.jpg",
+        "descripcion": "Vive la vida de un felino, en un mundo destruido lleno de robots y criaturas peligrosas."
+    },
+    {
+        "id": 5,
+        "nombre": "DAYZ",
+        "precio": 800,
+        "stock": 100,
+        "img": "./imgs/dayz.jpg",
+        "descripcion": "Un mundo lleno de zombies y otros jugadores que buscan sobrevivir."
+    },
+    {
+        "id": 6,
+        "nombre": "Red Dead Redemption 2",
+        "precio": 1600,
+        "stock": 100,
+        "img": "./imgs/rdr2.jpg",
+        "descripcion": "Preparate para ser un forajido o cazarecompensas en el lejano oeste."
+    }
+]

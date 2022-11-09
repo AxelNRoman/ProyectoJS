@@ -1,4 +1,4 @@
-class Productos {
+class Producto {
     constructor(id, nombre, precio, stock, img, descripcion) {
         this.id = id;
         this.nombre = nombre;
@@ -9,58 +9,8 @@ class Productos {
     }
 }
 
-const productos = [
-    {
-        id: 1,
-        nombre: "Forza5",
-        precio: 3300,
-        stock: 100,
-        img: "./imgs/forza5.jpg",
-        descripcion: "Maneja como nunca en el mundo de Forza Horizon, con una gran cantidad de vehiculos que te encantaran."
-    },
-    {
-        id: 2,
-        nombre: "CyberPunk77",
-        precio: 5200,
-        stock: 100,
-        img: "./imgs/cyber77.jpg",
-        descripcion: "Un futuro lleno de tecnologia avanzada y problemas te esperan."
-    },
-    {
-        id: 3,
-        nombre: "FIFA22",
-        precio: 3600,
-        stock: 100,
-        img: "./imgs/fifa22.jpg",
-        descripcion: "Conviertete en una estrella del futbol o el DT con más renombre, crea tu equipo, y más, en FIFA 22."
-    },
-    {
-        id: 4,
-        nombre: "STRAY",
-        precio: 1900,
-        stock: 100,
-        img: "./imgs/stray.jpg",
-        descripcion: "Vive la vida de un felino, en un mundo destruido lleno de robots y criaturas peligrosas."
-    },
-    {
-        id: 5,
-        nombre: "DAYZ",
-        precio: 800,
-        stock: 100,
-        img: "./imgs/dayz.jpg",
-        descripcion: "Un mundo lleno de zombies y otros jugadores que buscan sobrevivir."
-    },
-    {
-        id: 6,
-        nombre: "RDR2",
-        precio: 1600,
-        stock: 100,
-        img: "./imgs/rdr2.jpg",
-        descripcion: "Preparate para ser un forajido o cazarecompensas en el lejano oeste."
-    },
-]
-
 const compras = []
+let productos = []
 let carrito = [];
 const precioCarrito = [];
 const cartas = document.getElementById(`cartas`)
@@ -71,11 +21,22 @@ const btnCompra = document.getElementById(`btnCompra`)
 const btnCerrar = document.getElementById(`btnCerrar`)
 
 
-
 //Declaracion de funciones
+obtenerProductos();
 calcularPrecio();
-cardsProductos();
 lsCarrito();
+
+//JSON con productos.
+function obtenerProductos() {
+    const URLJSON = "js/productos.json"
+    fetch(URLJSON)
+        .then(res => res.json())
+        .then(data => {
+            productos = data
+            console.log(productos)
+            cardsProductos()
+        })
+}
 
 //Funcion LocalStorage
 function lsCarrito() {
@@ -87,29 +48,29 @@ function lsCarrito() {
 
 //Funcion dibujo de cards
 function cardsProductos() {
-    for (const Productos of productos) {
+    for (const producto of productos) {
         let carta = document.createElement(`div`);
         carta.className = `card`;
         carta.innerHTML = `<div class="" style="width: 18rem;">
-             <img src="${Productos.img}" class="card_img" alt="...">
+             <img src="${producto.img}" class="card_img" alt="...">
            <div class="card-body">
-             <h5 class="card_name">${Productos.nombre}</h5>
-             <p class="card_description">${Productos.descripcion}</p>
+             <h5 class="card_name">${producto.nombre}</h5>
+             <p class="card_description">${producto.descripcion}</p>
              <div>
-            <button id="agregarCarrito${Productos.id}" type="button" class="card_button">Añadir</button>
+            <button id="agregarCarrito${producto.id}" type="button" class="card_button">Añadir</button>
             </div>
         </div>
     `;
         cartas.append(carta);
-        const button = document.getElementById(`agregarCarrito${Productos.id}`)
+        const button = document.getElementById(`agregarCarrito${producto.id}`)
         button.addEventListener("click", (e) => {
             e.preventDefault()
             Swal.fire(
-                `${Productos.nombre}`,
+                `${producto.nombre}`,
                 `Agregado al carrito`,
                 `success`
             );
-            carrito.push(Productos)
+            carrito.push(producto)
             calcularPrecio();
             localStorage.setItem("carrito", JSON.stringify(carrito))
         })
@@ -131,15 +92,15 @@ function calcularPrecio() {
 //Evento boton carrito
 btnPrecio.addEventListener("click", contCarrito)
 function contCarrito() {
-    for (const Productos of carrito) {
+    for (const producto of carrito) {
         let contCarrito = document.createElement(`div`);
         contCarrito.innerHTML = ` 
         <div class=cardCarrito>
-        <img src="${Productos.img}" class="cart_image" alt="productos">
+        <img src="${producto.img}" class="cart_image" alt="productos">
         <div class="cart_cont">
-        <h5 class="text_color d-flex justify-content-center align-items-center card-title">${Productos.nombre}</h5>
+        <h5 class="text_color d-flex justify-content-center align-items-center card-title">${producto.nombre}</h5>
         <div class="d-flex justify-content-around text_color align-items-center">
-        <p class="card-text">$${Productos.precio}</p>
+        <p class="card-text">$${producto.precio}</p>
                 </div>
             </div>
             </div>
