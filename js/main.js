@@ -21,24 +21,20 @@ const btnCompra = document.getElementById(`btnCompra`)
 const btnCerrar = document.getElementById(`btnCerrar`)
 
 
-//Declaracion de funciones
 obtenerProductos();
 calcularPrecio();
 lsCarrito();
 
-//JSON con productos.
 function obtenerProductos() {
     const URLJSON = "js/productos.json"
     fetch(URLJSON)
         .then(res => res.json())
         .then(data => {
             productos = data
-            console.log(productos)
             cardsProductos()
         })
 }
 
-//Funcion LocalStorage
 function lsCarrito() {
     if (localStorage.getItem(`carrito`)) {
         carrito = JSON.parse(localStorage.getItem(`carrito`))
@@ -46,7 +42,6 @@ function lsCarrito() {
     }
 }
 
-//Funcion dibujo de cards
 function cardsProductos() {
     for (const producto of productos) {
         let carta = document.createElement(`div`);
@@ -77,7 +72,6 @@ function cardsProductos() {
     }
 }
 
-//funcion precio carrito
 function calcularPrecio() {
     const precios = carrito.map(x => x.precio)
     precioCarrito.push = (precios)
@@ -89,7 +83,6 @@ function calcularPrecio() {
     carrito.length == 0 ? total.innerHTML = `<p class="text_color" >¡Su carrito se encuentra vacío!</p>` : total.innerHTML = `<p class="text_color">Total a apagar $${montoTotal}</p>`
 }
 
-//Evento boton carrito
 btnPrecio.addEventListener("click", contCarrito)
 function contCarrito() {
     for (const producto of carrito) {
@@ -110,18 +103,14 @@ function contCarrito() {
     }
 }
 
-//Redibujar de 0 carrito
 btnCerrar.addEventListener(`click`, function () {
     contenidoCarrito.innerHTML = ``;
 })
 
-//Ternario para habilitar compra.
 btnCompra.addEventListener(`click`, function () {
     carrito.length !== 0 ?
-        //Si el carrito tiene productos y se presiona comprar.
         correct()
         :
-        //Si el carrito no posee productos y se presiona comprar. 
         Swal.fire(
             `¡Aun no posee productos en su carrito!`,
             `Seleccione el prodcuto que desee y vuelva a intentarlo`,
@@ -129,7 +118,7 @@ btnCompra.addEventListener(`click`, function () {
         );
 })
 
-//SweatAlert para la compra realizada.
+
 function correct() {
     Swal.fire(
         `¡Su compra se ha realizado con exito!`,
